@@ -1,0 +1,32 @@
+:root {
+  --cprimary: rgba(63, 114, 175, 1);
+  --cdark: rgba(17, 45, 78, 1);
+  --csecondary: rgba(219, 226, 239, 1);
+  --clight: rgba(249, 247, 247, 1);
+}
+
+
+
+
+.reservations {}
+
+.Cbg-primary {
+  background-color: var(--cprimary);
+}
+
+.Cbg-dark {
+  background-color: var(--cdark);
+}
+
+.reservation-container {
+  background-color: red;
+  margin: 2em;
+  background-color: var(--csecondary);
+  color: var(--cdark);
+}
+
+.separator-line {
+  background-color: var(--cdark);
+  min-width: 100%;
+  min-height: 2px;
+}
