@@ -1,3 +1,4 @@
+import { ProxyState } from "../AppState.js"
 import { generateId } from "../Utils/generateId.js"
 
 
@@ -14,7 +15,7 @@ export class Trip {
     return `
     
 
-    <div class="container pb-2" id="tripData">
+    < class="container pb-2" id="tripData">
     <div class="row m-3 bg-light">
       <div class="trip-names d-flex col-12" id="trip-names">
         <h3 class="bg-light">${this.name}</h3>
@@ -26,16 +27,9 @@ export class Trip {
       <div class="col-2">Date</div>
       <div class="col-1">Cost</div>
     </div>
-    <div class="row m-3 rounded reservation-container shadow py-3" id="${this.id}">
-      <!-- NOTE reservations template beginning -->
-      <!-- <div class="col-1">Type</div>
-      <div class="col-2">Name</div>
-      <div class="col-3">Confirmation Number</div>
-      <div class="col-3">Address</div>
-      <div class="col-2">Date</div>
-      <div class="col-1">Cost</div> -->
-      <!-- NOTE reservations template end -->
-    </div>
+
+    ${this.ReservationsTemplate}
+
     <div class="row pb-2">
       <div class="col-12">
         <div class="separator-line mb-3 rounded"></div>
@@ -81,5 +75,13 @@ export class Trip {
     return `
       
       `
+  }
+
+  get ReservationsTemplate() {
+    let reservations = ProxyState.reservations.filter(r => r.tripId == this.id)
+    let template = ``
+    reservations.forEach(r => template += r.Template)
+    console.log(template);
+    return template
   }
 }
