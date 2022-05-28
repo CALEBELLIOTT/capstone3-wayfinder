@@ -13,8 +13,8 @@ function _draw() {
 export class TripsController {
   constructor() {
     console.log("trips controller loaded");
-    _draw()
-    ProxyState.on('trips', _draw)
+    // _draw()
+    // ProxyState.on('trips', _draw)
   }
 
   addTrip() {

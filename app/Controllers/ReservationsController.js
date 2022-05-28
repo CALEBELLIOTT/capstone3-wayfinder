@@ -1,19 +1,19 @@
 import { ProxyState } from "../AppState.js"
 import { reservationsService } from "../Services/ReservationsService.js";
 
-
-function _draw(id) {
+// FIXME figure out how to draw using the id functionality
+function _draw() {
   let template = ``
   ProxyState.reservations.forEach(r => template += r.Template)
   // console.log(template);
-  document.getElementById('reservations').innerHTML = template
+  document.getElementById(`${id}`).innerHTML = template
 }
 
 
 export class ReservationsController {
   constructor() {
     console.log("hello from reservation controller");
-    _draw()
+    // _draw()
   }
 
   addReservation(id) {
@@ -21,6 +21,6 @@ export class ReservationsController {
     window.event.preventDefault()
     // console.log(form.name.value, form.confirmationNumber.value);
     reservationsService.addReservation(form, id)
-
+    console.log(id);
   }
 }

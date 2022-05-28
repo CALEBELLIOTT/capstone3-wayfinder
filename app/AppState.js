@@ -8,6 +8,7 @@ class AppState extends EventEmitter {
   values = []
   reservations = [new Reservation({ type: 'flight', name: 'Delta 1356', confirmationNumber: '245xt533ch', date: "3/5/22", cost: 245, tripId: 423152314124321, address: "2998 las vegas road" })]
   trips = [new Trip({ name: "Las Vegas", description: "Going to las vegas with my family!" })]
+  currentTripId = 0
 }
 
 export const ProxyState = new Proxy(new AppState(), {
