@@ -1,3 +1,4 @@
+import { generateId } from "../Utils/generateId.js"
 
 
 
@@ -10,18 +11,20 @@ export class Reservation {
     this.cost = data.cost
     this.tripId = data.tripId
     this.address = data.address
+    this.id = data.id || generateId()
   }
 
   get Template() {
     return `
-    <div class="row m-1 rounded reservation-container shadow py-3">
-      <div class="col-1">${this.type}</div>
-      <div class="col-2">${this.name}</div>
-      <div class="col-3">${this.confirmationNumber}</div>
-      <div class="col-3">${this.address}</div>
-      <div class="col-2">${this.date}</div>
-      <div class="col-1">${this.cost}</div>
+    <div class="row m-1 rounded reservation-container shadow p-2">
+      <div class="col-1 d-flex align-items-center">${this.type}</div>
+      <div class="col-2 d-flex align-items-center">${this.name}</div>
+      <div class="col-3 d-flex align-items-center">${this.confirmationNumber}</div>
+      <div class="col-3 d-flex align-items-center">${this.address}</div>
+      <div class="col-2 d-flex align-items-center">${this.date}</div>
+      <div class="col-1 d-flex align-items-center justify-content-between">$${this.cost} <i onclick="app.reservationsController.deleteReservation('${this.id}')" class="mdi mdi-trash-can selectable"></i></div>
     </div>
     `
   }
+
 }

@@ -27,115 +27,64 @@
   </header>
 
 
-  <main class="Cbg-dark">
-    <div class="container bg-light pb-2">
-      <div class="row">
-        <div class="col-12 Cbg-dark text-light pt-2">
-          <div class="d-flex justify-content-end">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              Add new Trip
-            </button>
+  <main class="Cbg-dark container-fluid">
+    <div class="row">
+      <div class="col-12 Cbg-dark text-light pt-2">
+        <div class="d-flex justify-content-end">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary mb-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add new Trip
+          </button>
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title text-dark" id="exampleModalLabel">Add Trip</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body text-dark" id="addTripForm">
-                    <!-- SECTION add trip form content -->
-                    <form action="" onsubmit="app.tripsController.addTrip()">
-                      <label for="tripName">Trip Name</label>
-                      <input type="text" name="tripName" id="tripName" required class="form-control"
-                        placeholder="trip name">
-                      <label for="tripDescription">Trip Description</label>
-                      <input type="text" name="tripDescription" id="tripDescription" required
-                        placeholder="trip description" class="form-control">
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit Trip</button>
-                  </div>
-                  </form>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title text-dark" id="exampleModalLabel">Add Trip</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="modal-body text-dark" id="addTripForm">
+                  <!-- SECTION add trip form content -->
+                  <form action="" onsubmit="app.tripsController.addTrip()">
+                    <label for="tripName">Trip Name</label>
+                    <input type="text" name="tripName" id="tripName" required class="form-control"
+                      placeholder="trip name" minlength="3" maxlength="15">
+                    <label for="tripDescription">Trip Description</label>
+                    <input type="text" name="tripDescription" id="tripDescription" required
+                      placeholder="trip description" class="form-control">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Submit Trip</button>
+                </div>
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-2">
 
-          </div>
+    <!-- SECTION trips tabs -->
+    <div class="container">
+      <div class="row" id="tripsTabs">
+        <div class="col-1">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a href="#" class="nav-link active">Las Vegas</a>
+            </li>
+          </ul>
         </div>
       </div>
+    </div>
+
+    <div class="container bg-light rounded" id="tripData">
+    </div>
 
 
-      <div class="container" id="tripData">
-        <div class="row m-3 bg-light">
-          <div class="trip-names d-flex col-12" id="trip-names">
-            <h3 class="bg-light">Disneyland</h3>
-          </div>
-          <div class="col-1">Type</div>
-          <div class="col-2">Name</div>
-          <div class="col-3">Confirmation Number</div>
-          <div class="col-3">Address</div>
-          <div class="col-2">Date</div>
-          <div class="col-1">Cost</div>
-        </div>
-        <div class="row m-3 rounded reservation-container shadow py-3" id="reservations">
-          <!-- NOTE reservations template beginning -->
-          <!-- <div class="col-1">Type</div>
-          <div class="col-2">Name</div>
-          <div class="col-3">Confirmation Number</div>
-          <div class="col-3">Address</div>
-          <div class="col-2">Date</div>
-          <div class="col-1">Cost</div> -->
-          <!-- NOTE reservations template end -->
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <div class="separator-line mb-3 rounded"></div>
-          </div>
-
-          <div class="row" id="reservation-form">
-            <div class="col-12">
-              <form action="" onsubmit="app.reservationsController.addReservation()">
-                <div class="row">
-                  <div class="col-1">
-                    <input class="form-control" type="select" name="type" id="type" placeholder="Type">
-                  </div>
-                  <div class="col-2">
-                    <input class="form-control" type="text" name="name" id="name" placeholder="Name">
-                  </div>
-                  <div class="col-3">
-                    <input class="form-control" type="text" name="confirmationNumber" id="confirmationNumber"
-                      placeholder="Confirmation Number">
-                  </div>
-                  <div class="col-3">
-                    <input class="form-control" type="text" name="address" id="address" placeholder="Address">
-                  </div>
-                  <div class="col-2">
-                    <input class="form-control" type="date" name="date" id="date">
-                  </div>
-                  <div class="col-1">
-                    <input class="form-control" type="number" name="cost" id="cost" placeholder="$0.00">
-                  </div>
-                  <div class="col-12 text-end">
-                    <button class="btn">Add Reservation&nbsp<i class="mdi mdi-check"></i></button>
-                  </div>
-                </div>
-            </div>
-            </form>
-          </div>
-        </div>
-      </div>
 
     </div>
     </div>

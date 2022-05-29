@@ -6,9 +6,16 @@ import { isValidProp } from "./Utils/isValidProp.js"
 class AppState extends EventEmitter {
   /** @type {import('./Models/Value').Value[]} */
   values = []
-  reservations = [new Reservation({ type: 'flight', name: 'Delta 1356', confirmationNumber: '245xt533ch', date: "3/5/22", cost: 245, tripId: 423152314124321, address: "2998 las vegas road" })]
-  trips = [new Trip({ name: "Las Vegas", description: "Going to las vegas with my family!" })]
-  currentTripId = 0
+  reservations = []
+  trips = []
+
+  emptyReservationTemplate = `
+  <div class="row">
+    <div class="col-12 text-muted d-flex align-items-center justify-content-center">
+      <p>No Reservations To Show</p>
+    </div>
+  </div>
+  `
 }
 
 export const ProxyState = new Proxy(new AppState(), {

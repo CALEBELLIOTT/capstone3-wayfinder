@@ -1,5 +1,6 @@
 import { ProxyState } from "../AppState.js";
 import { tripsService } from "../Services/TripsService.js";
+import { loadState, saveState } from "../Utils/LocalStorage.js";
 
 
 
@@ -12,10 +13,12 @@ function _draw() {
 }
 export class TripsController {
   constructor() {
+    loadState()
     console.log("trips controller loaded");
     _draw()
     ProxyState.on('trips', _draw)
     ProxyState.on('reservations', _draw)
+    ProxyState.on('trips', saveState)
   }
 
   addTrip() {
@@ -24,5 +27,19 @@ export class TripsController {
     window.event.preventDefault()
     console.log(name, description);
     tripsService.addTrip(name, description)
+  }
+
+  deleteTrip(id) {
+    let newTrips = ProxyState.trips.filter(t => t.id != id)
+    console.log(newTrips);
+    ProxyState.trips = newTrips
+  }
+
+  updateTripNotes(id) {
+    window.event.preventDefault()
+    let submission = window.event.target.tripNotes.value
+    let targetTrip = ProxyState.trips.find(t => t.id == id)
+    targetTrip.description = submission
+    ProxyState.trips = ProxyState.trips
   }
 }
