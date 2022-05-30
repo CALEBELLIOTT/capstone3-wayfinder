@@ -9,6 +9,7 @@ class AppState extends EventEmitter {
   reservations = []
   trips = []
 
+
   emptyReservationTemplate = `
   <div class="row">
     <div class="col-12 text-muted d-flex align-items-center justify-content-center">

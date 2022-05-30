@@ -13,16 +13,13 @@ function _draw() {
   document.getElementById("tripData").innerHTML = template
   template = ``
   trips.forEach(t => template += t.TabsTemplate)
-  console.log(template);
   document.getElementById("myTab").innerHTML = template
-  console.log(ProxyState.trips);
 }
 
 
 export class TripsController {
   constructor() {
     loadState()
-    console.log("trips controller loaded");
     _draw()
     ProxyState.on('trips', _draw)
     ProxyState.on('reservations', _draw)
@@ -33,7 +30,6 @@ export class TripsController {
     let name = window.event.target.tripName.value
     let description = window.event.target.tripDescription.value
     window.event.preventDefault()
-    console.log(name, description);
     tripsService.addTrip(name, description)
   }
 

@@ -14,7 +14,7 @@ export class Trip {
 
   get Template() {
     return `
-    <div class="tab-pane fade show active" id="a${this.id}" role="tabpanel" aria-labelledby="${this.name}">
+    <div class="tab-pane fade show ${this.checkIfFirst}" id="a${this.id}" role="tabpanel" aria-labelledby="${this.name}">
     <div class="row mx-3 mb-3 bg-light p-2">
     <div class="d-flex col-12 justify-content-between">
       <h1>${this.name}</h1>
@@ -69,7 +69,7 @@ export class Trip {
       <div class="col-6">
       <h3>Notes</h3>
       <form onsubmit="app.tripsController.updateTripNotes('${this.id}')">
-        <input type="text-area" class="form-control" value="${this.description}" name="tripNotes" id="tripNotes">
+        <input type="text-area" class="form-control" value="${this.description}" name="tripNotes" id="tripNotes" required>
         <button type="submit" class="btn px-0">update trip notes&nbsp<i class="mdi mdi-check"></i> </button>
       </form>
       </div>
@@ -117,5 +117,11 @@ export class Trip {
         role="tab" aria-controls="home" aria-selected="true">${this.name}</button>
     </li>
     `
+  }
+
+  get checkIfFirst() {
+    if (ProxyState.trips[0].id == this.id) {
+      return "active"
+    }
   }
 }

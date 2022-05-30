@@ -9,7 +9,6 @@ import { Pop } from "../Utils/Pop.js";
 
 export class ReservationsController {
   constructor() {
-    console.log("hello from reservation controller");
     ProxyState.on('reservations', saveState)
   }
 
