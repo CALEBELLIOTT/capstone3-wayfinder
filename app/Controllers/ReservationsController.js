@@ -17,9 +17,7 @@ export class ReservationsController {
     window.event.preventDefault()
     // console.log(form.name.value, form.confirmationNumber.value);
     reservationsService.addReservation(form, id)
-    console.log(id);
-    console.log(ProxyState.trips);
-    console.log(ProxyState.reservations);
+    document.getElementById()
   }
 
   deleteReservation(id) {
