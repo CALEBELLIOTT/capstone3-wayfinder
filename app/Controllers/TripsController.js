@@ -1,6 +1,7 @@
 import { ProxyState } from "../AppState.js";
 import { tripsService } from "../Services/TripsService.js";
 import { loadState, saveState } from "../Utils/LocalStorage.js";
+import { Pop } from "../Utils/Pop.js";
 
 
 
@@ -10,7 +11,14 @@ function _draw() {
   let template = ``
   trips.forEach(t => template += t.Template)
   document.getElementById("tripData").innerHTML = template
+  template = ``
+  trips.forEach(t => template += t.TabsTemplate)
+  console.log(template);
+  document.getElementById("myTab").innerHTML = template
+  console.log(ProxyState.trips);
 }
+
+
 export class TripsController {
   constructor() {
     loadState()
@@ -41,5 +49,6 @@ export class TripsController {
     let targetTrip = ProxyState.trips.find(t => t.id == id)
     targetTrip.description = submission
     ProxyState.trips = ProxyState.trips
+    Pop.toast('Trip Notes Updated')
   }
 }

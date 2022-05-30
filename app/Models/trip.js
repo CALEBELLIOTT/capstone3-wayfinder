@@ -8,13 +8,14 @@ export class Trip {
     this.name = data.name
     this.description = data.description
     this.id = data.id || generateId()
+    this.shorterId = data.shorterId || Math.floor(Math.random() * 100000)
   }
 
 
   get Template() {
     return `
-    
-    <div class="row m-3 bg-light p-2">
+    <div class="tab-pane fade show active" id="a${this.id}" role="tabpanel" aria-labelledby="${this.name}">
+    <div class="row mx-3 mb-3 bg-light p-2">
     <div class="d-flex col-12 justify-content-between">
       <h1>${this.name}</h1>
       <h4><i class="mdi mdi-trash-can selectable" onclick="app.tripsController.deleteTrip('${this.id}')"></i></h4>
@@ -25,7 +26,7 @@ export class Trip {
     <div class="col-3">Address</div>
     <div class="col-2">Date</div>
     <div class="col-1">Cost</div>
-  </div>
+    </div>
 
     ${this.ReservationsTemplate}
 
@@ -78,7 +79,7 @@ export class Trip {
       </div>
     </div>
     </div>
-
+    </div>
 
     `
   }
@@ -105,5 +106,15 @@ export class Trip {
     let totalCost = 0
     reservations.forEach(r => totalCost += parseInt(r.cost))
     return totalCost
+  }
+
+
+  get TabsTemplate() {
+    return `
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="${this.name}" data-bs-toggle="tab" data-bs-target="#a${this.id}" type="button"
+        role="tab" aria-controls="home" aria-selected="true">${this.name}</button>
+    </li>
+    `
   }
 }
