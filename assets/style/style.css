@@ -1,7 +1,7 @@
 :root {
   --cprimary: rgba(63, 114, 175, 1);
   --cdark: rgba(17, 45, 78, 1);
-  --csecondary: rgb(174, 197, 240);
+  --csecondary: rgb(207, 220, 244);
   ;
   --clight: rgba(249, 247, 247, 1);
 }
@@ -9,7 +9,6 @@
 
 
 
-.reservations {}
 
 .Cbg-primary {
   background-color: var(--cprimary);

@@ -1,6 +1,7 @@
 import { ProxyState } from "../AppState.js"
 import { reservationsService } from "../Services/ReservationsService.js";
 import { saveState } from "../Utils/LocalStorage.js";
+import { Pop } from "../Utils/Pop.js";
 
 
 
@@ -20,7 +21,9 @@ export class ReservationsController {
     document.getElementById()
   }
 
-  deleteReservation(id) {
-    reservationsService.deleteReservation(id)
+  async deleteReservation(id) {
+    if (await Pop.confirm("Are you sure you want to delete this reservation?") == true) {
+      reservationsService.deleteReservation(id)
+    }
   }
 }

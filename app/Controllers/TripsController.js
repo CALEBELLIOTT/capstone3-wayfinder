@@ -37,10 +37,10 @@ export class TripsController {
     tripsService.addTrip(name, description)
   }
 
-  deleteTrip(id) {
-    let newTrips = ProxyState.trips.filter(t => t.id != id)
-    console.log(newTrips);
-    ProxyState.trips = newTrips
+  async deleteTrip(id) {
+    if (await Pop.confirm('are you sure you want to delete the whole trip?') == true) {
+      tripsService.deleteTrip(id)
+    }
   }
 
   updateTripNotes(id) {

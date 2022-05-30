@@ -97,6 +97,7 @@ export class Trip {
     if (reservations.length < 1) {
       return emptyTemplate
     }
+    reservations = reservations.sort((a, b) => b.date - a.date)
     reservations.forEach(r => template += r.Template)
     return template
   }
