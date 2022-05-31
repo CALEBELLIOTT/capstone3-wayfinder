@@ -21,7 +21,7 @@ export class ReservationsController {
   }
 
   async deleteReservation(id) {
-    if (await Pop.confirm("Are you sure you want to delete this reservation?") == true) {
+    if (await Pop.confirm("Are you sure you want to delete this reservation?", "success", "success") == true) {
       reservationsService.deleteReservation(id)
     }
   }
